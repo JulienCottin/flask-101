@@ -20,3 +20,10 @@ def hello():
 @app.route(f'{BASE_URL}/products', methods=['GET'])
 def read_many_products():
     return jsonify(PRODUCTS)
+
+@app.route(f'{BASE_URL}/products/<int:id>', methods=['GET'])
+def read_single_product(id):
+    if id > 3 :
+        return jsonify('404')
+    return jsonify(PRODUCTS[id])
+
